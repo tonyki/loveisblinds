@@ -332,6 +332,18 @@
         </div>
     </footer>
 
+    <!-- ===== Lightbox ===== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-img-wrap">
+            <img src="" alt="" id="lightbox-img">
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+        <a href="#hmform" class="lightbox-cta" id="lightbox-cta"><i class="fas fa-calendar-alt"></i> Get a Free Quote</a>
+    </div>
+
     <!-- ===== Mobile Sticky CTA Bar ===== -->
     <div class="mobile-sticky-cta">
         <a href="tel:+1-817-857-8453" class="mobile-sticky-btn mobile-sticky-call"><i class="fas fa-phone-alt"></i> Call Now</a>
@@ -461,6 +473,94 @@
                 });
             });
         });
+
+        // Lightbox
+        (function() {
+            const lightbox = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            const lbCounter = document.getElementById('lightbox-counter');
+            const lbCta = document.getElementById('lightbox-cta');
+            let images = [];
+            let currentIdx = 0;
+
+            function open(src, slideshow) {
+                // Collect all images from the same slideshow
+                images = Array.from(slideshow.querySelectorAll('.slide img')).map(img => img.src);
+                currentIdx = images.indexOf(src);
+                if (currentIdx === -1) currentIdx = 0;
+                show();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function close() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function show() {
+                lbImg.src = images[currentIdx];
+                lbImg.alt = 'Product photo ' + (currentIdx + 1);
+                lbCounter.textContent = (currentIdx + 1) + ' / ' + images.length;
+            }
+
+            function next() {
+                currentIdx = (currentIdx + 1) % images.length;
+                show();
+            }
+
+            function prev() {
+                currentIdx = (currentIdx - 1 + images.length) % images.length;
+                show();
+            }
+
+            // Open lightbox on slideshow image click
+            document.querySelectorAll('.product-slideshow .slide img').forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    open(this.src, this.closest('.product-slideshow'));
+                });
+            });
+
+            lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+            lightbox.querySelector('.lightbox-prev').addEventListener('click', prev);
+            lightbox.querySelector('.lightbox-next').addEventListener('click', next);
+
+            // Close on backdrop click
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target.classList.contains('lightbox-img-wrap')) close();
+            });
+
+            // Keyboard nav
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+            });
+
+            // CTA closes lightbox and scrolls to form
+            lbCta.addEventListener('click', function(e) {
+                e.preventDefault();
+                close();
+                setTimeout(() => {
+                    document.getElementById('hmform').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            });
+
+            // Swipe support for mobile
+            let touchStartX = 0;
+            lightbox.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            lightbox.addEventListener('touchend', function(e) {
+                const diff = e.changedTouches[0].screenX - touchStartX;
+                if (Math.abs(diff) > 50) {
+                    if (diff < 0) next();
+                    else prev();
+                }
+            }, { passive: true });
+        })();
     </script>
 </body>
 </html>
