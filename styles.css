@@ -1238,12 +1238,36 @@ a {
         font-size: 28px;
     }
 
-    .top-bar-phone {
-        font-size: 14px;
+    .top-logo-bar {
+        padding: 6px 0;
+    }
+
+    .top-bar-inner {
+        gap: 8px;
     }
 
     .top-logo {
-        max-width: 140px;
+        max-width: 100px;
+        flex-shrink: 0;
+    }
+
+    .top-bar-right {
+        gap: 8px;
+    }
+
+    .top-bar-phone {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .top-bar-phone i {
+        margin-right: 4px;
+    }
+
+    .top-bar-cta {
+        padding: 7px 14px;
+        font-size: 11px;
+        white-space: nowrap;
     }
 
     .btn-phone {
@@ -1355,5 +1379,23 @@ a {
         flex-direction: column;
         align-items: center;
         gap: 6px;
+    }
+
+    .top-logo {
+        max-width: 80px;
+    }
+
+    .top-bar-phone {
+        font-size: 0;
+    }
+
+    .top-bar-phone i {
+        font-size: 18px;
+        margin-right: 0;
+    }
+
+    .top-bar-cta {
+        padding: 6px 12px;
+        font-size: 10px;
     }
 }
