@@ -27,7 +27,7 @@
     <!-- ===== SECTION 1: Hero with Form ===== -->
     <section class="hero-section" id="hero-section">
         <div class="hero-bg">
-            <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Living+3-5921e560-1920w.jpeg" alt="Beautiful Living Room with Custom Window Treatments">
+            <img src="img/LIB%20Shutters/Living%201.jpeg" alt="Beautiful Living Room with Custom Plantation Shutters">
         </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -144,8 +144,15 @@
         <div class="container">
             <div class="products-grid four-col">
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/4-1920w.jpg" alt="Plantation Shutters">
+                    <div class="product-slideshow">
+                        <div class="slide active"><img src="img/LIB%20Shutters/Living%202.jpeg" alt="Plantation Shutters in Living Room"></div>
+                        <div class="slide"><img src="img/LIB%20Shutters/Bedroom%201.jpeg" alt="Plantation Shutters in Bedroom"></div>
+                        <div class="slide"><img src="img/LIB%20Shutters/Kitchen%202.jpeg" alt="Plantation Shutters in Kitchen"></div>
+                        <div class="slide"><img src="img/LIB%20Shutters/Dining%201.jpeg" alt="Plantation Shutters in Dining Room"></div>
+                        <div class="slide"><img src="img/LIB%20Shutters/Office%201.jpeg" alt="Plantation Shutters in Office"></div>
+                        <div class="slideshow-dots">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
                     </div>
                     <div class="product-card-body">
                         <h3>Plantation Shutters</h3>
@@ -154,8 +161,13 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Rollers-2-1920w.jpeg" alt="Roller Shades">
+                    <div class="product-slideshow">
+                        <div class="slide active"><img src="img/LIB%20Roller%20Shades/Rollers%202.jpeg" alt="Roller Shades in Living Room"></div>
+                        <div class="slide"><img src="img/LIB%20Roller%20Shades/Rollers%204.jpeg" alt="Roller Shades in Modern Living Room"></div>
+                        <div class="slide"><img src="img/LIB%20Roller%20Shades/IMG_2663.jpeg" alt="Roller Shades in Bedroom"></div>
+                        <div class="slideshow-dots">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
                     </div>
                     <div class="product-card-body">
                         <h3>Roller Shades</h3>
@@ -164,8 +176,12 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Blinds+1-1920w.jpeg" alt="Faux Wood Blinds">
+                    <div class="product-slideshow">
+                        <div class="slide active"><img src="img/LIB%20Blinds/Blinds%201.jpeg" alt="Faux Wood Blinds in Kitchen"></div>
+                        <div class="slide"><img src="img/LIB%20Blinds/Blinds%202.jpeg" alt="Faux Wood Blinds in Living Room"></div>
+                        <div class="slideshow-dots">
+                            <span class="dot active"></span><span class="dot"></span>
+                        </div>
                     </div>
                     <div class="product-card-body">
                         <h3>Faux Wood Blinds</h3>
@@ -174,8 +190,12 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Banded+1A-1920w.jpeg" alt="Banded Shades">
+                    <div class="product-slideshow">
+                        <div class="slide active"><img src="img/LIB%20Dual%20Shades/Banded%201A.jpeg" alt="Banded Shades in Living Room"></div>
+                        <div class="slide"><img src="img/LIB%20Dual%20Shades/IMG_2684.jpeg" alt="Banded Shades in Dining Room"></div>
+                        <div class="slideshow-dots">
+                            <span class="dot active"></span><span class="dot"></span>
+                        </div>
                     </div>
                     <div class="product-card-body">
                         <h3>Banded Shades</h3>
@@ -400,6 +420,46 @@
             btnSpinner.style.display = 'none';
             btn.classList.remove('loading');
             btn.disabled = false;
+        });
+
+        // Product card slideshows
+        document.querySelectorAll('.product-slideshow').forEach((slideshow, index) => {
+            const slides = slideshow.querySelectorAll('.slide');
+            const dots = slideshow.querySelectorAll('.dot');
+            if (slides.length <= 1) return;
+
+            let current = 0;
+            let timer;
+
+            function goTo(n) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = ((n % slides.length) + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function startAutoplay() {
+                timer = setInterval(() => goTo(current + 1), 4000);
+            }
+
+            // Stagger start so cards don't all switch at the same time
+            setTimeout(() => startAutoplay(), index * 1200);
+
+            slideshow.addEventListener('mouseenter', () => clearInterval(timer));
+            slideshow.addEventListener('mouseleave', () => {
+                clearInterval(timer);
+                startAutoplay();
+            });
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    clearInterval(timer);
+                    goTo(i);
+                    startAutoplay();
+                });
+            });
         });
     </script>
 </body>

@@ -547,21 +547,64 @@ a {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.product-image {
+/* Product Slideshow */
+.product-slideshow {
+    position: relative;
     width: 100%;
     height: 220px;
     overflow: hidden;
 }
 
-.product-image img {
+.product-slideshow .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.product-slideshow .slide.active {
+    opacity: 1;
+}
+
+.product-slideshow .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.product-card:hover .product-image img {
-    transform: scale(1.08);
+.product-card:hover .product-slideshow .slide.active img {
+    transform: scale(1.05);
+}
+
+.slideshow-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+    z-index: 5;
+}
+
+.slideshow-dots .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.slideshow-dots .dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.slideshow-dots .dot.active {
+    background: var(--color-white);
+    transform: scale(1.15);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 .product-card-body {
