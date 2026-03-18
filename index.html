@@ -15,15 +15,17 @@
 
     <!-- ===== SECTION 0: Top Logo Bar ===== -->
     <section class="top-logo-bar">
-        <div class="container">
-            <a href="https://dfw.loveisblindstx.com/">
-                <img src="https://irp.cdn-website.com/bd132645/dms3rep/multi/love-is-blinds-custom-blinds-shades-shutters-logo.png" alt="Love Is Blinds - Custom Blinds, Shades & Shutters" class="top-logo">
-            </a>
+        <div class="container top-bar-inner">
+            <img src="https://irp.cdn-website.com/bd132645/dms3rep/multi/love-is-blinds-custom-blinds-shades-shutters-logo.png" alt="Love Is Blinds - Custom Blinds, Shades & Shutters" class="top-logo">
+            <div class="top-bar-right">
+                <a href="tel:+1-817-857-8453" class="top-bar-phone"><i class="fas fa-phone-alt"></i> (817) 857-8453</a>
+                <a href="#hmform" class="top-bar-cta" id="top-bar-cta">Free Consultation</a>
+            </div>
         </div>
     </section>
 
     <!-- ===== SECTION 1: Hero with Form ===== -->
-    <section class="hero-section">
+    <section class="hero-section" id="hero-section">
         <div class="hero-bg">
             <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Living+3-5921e560-1920w.jpeg" alt="Beautiful Living Room with Custom Window Treatments">
         </div>
@@ -38,34 +40,23 @@
                 <div class="hero-left">
                     <div class="form-container" id="hmform">
                         <h3 class="form-title">Request a Free In-Home Consultation</h3>
+                        <p class="form-urgency"><i class="fas fa-clock"></i> DFW schedules are filling up. Book this week for priority availability</p>
                         <form id="contact-form" action="#" method="POST">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="firstName">First Name <span class="required">*</span></label>
-                                    <input type="text" id="firstName" name="firstName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name <span class="required">*</span></label>
-                                    <input type="text" id="lastName" name="lastName" required>
-                                </div>
+                            <div class="form-error-banner" id="form-error" style="display:none;">
+                                <i class="fas fa-exclamation-circle"></i> <span id="form-error-text"></span>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="text" id="name" name="name" placeholder="Name *" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone <span class="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required>
+                                <input type="tel" id="phone" name="phone" placeholder="Phone *" required>
                             </div>
                             <div class="form-group">
-                                <label for="zipcode">Zip Code <span class="required">*</span></label>
-                                <input type="text" id="zipcode" name="zipcode" required>
+                                <input type="email" id="email" name="email" placeholder="Email *" required>
                             </div>
                             <div class="form-group">
-                                <label for="interest">What are you interested in?</label>
                                 <select id="interest" name="interest">
-                                    <option value="">-- Select --</option>
-                                    <option value="Plantation Shutters">Plantation Shutters</option>
+                                    <option value="Plantation Shutters" selected>Plantation Shutters</option>
                                     <option value="Roller Shades">Roller Shades</option>
                                     <option value="Faux Wood Blinds">Faux Wood Blinds</option>
                                     <option value="Banded Shades">Banded Shades</option>
@@ -74,12 +65,24 @@
                                     <option value="Not Sure">Not Sure - Need Guidance</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="3" placeholder="Tell us about your project..."></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">Request Free Consultation</button>
+                            <button type="submit" class="btn-submit" id="btn-submit">
+                                <span class="btn-submit-text">Request Free Consultation</span>
+                                <span class="btn-submit-spinner" style="display:none;"></span>
+                            </button>
+                            <p class="form-privacy"><i class="fas fa-lock"></i> Your info is secure. We never spam.</p>
                         </form>
+                        <div class="form-trust-badges">
+                            <span><i class="fas fa-star"></i> 5.0 Google Rating</span>
+                            <span><i class="fas fa-shield-alt"></i> Licensed &amp; Insured</span>
+                            <span><i class="fas fa-bolt"></i> Same-Day Response</span>
+                        </div>
+                        <!-- Inline success state -->
+                        <div class="form-success" id="form-success" style="display:none;">
+                            <div class="form-success-icon"><i class="fas fa-check-circle"></i></div>
+                            <h3 class="form-success-title" id="form-success-title">Thank You!</h3>
+                            <p class="form-success-text">We'll call within 1 business hour to schedule your free in-home consultation.</p>
+                            <a href="tel:+1-817-857-8453" class="btn-phone btn-phone-success"><i class="fas fa-phone-alt"></i> (817) 857-8453</a>
+                        </div>
                     </div>
                 </div>
 
@@ -114,55 +117,62 @@
         </div>
     </section>
 
-    <!-- ===== SECTION 2: Product Cards Row 1 ===== -->
+    <!-- ===== Social Proof Strip ===== -->
+    <section class="social-proof-strip">
+        <div class="container">
+            <div class="social-proof-items">
+                <div class="social-proof-item">
+                    <i class="fab fa-google"></i>
+                    <strong>5.0</strong> Google Rating
+                </div>
+                <div class="social-proof-divider"></div>
+                <div class="social-proof-item">
+                    <i class="fas fa-tools"></i>
+                    <strong>4-Year</strong> Service Guarantee
+                </div>
+                <div class="social-proof-divider"></div>
+                <div class="social-proof-item">
+                    <i class="fas fa-handshake"></i>
+                    <strong>Top</strong> Brand Partners
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Product Cards (4 cards) ===== -->
     <section class="products-section">
         <div class="container">
-            <div class="products-grid three-col">
+            <div class="products-grid four-col">
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/4-1920w.jpg" alt="Plantation Shutters">
                     </div>
-                    <h3>Plantation Shutters</h3>
-                    <p>Plantation Shutters add timeless elegance and exceptional light control to any room. With their durable design and classic appeal, they enhance privacy and energy efficiency.</p>
+                    <div class="product-card-body">
+                        <h3>Plantation Shutters</h3>
+                        <p>Plantation Shutters add timeless elegance and exceptional light control to any room. With their durable design and classic appeal, they enhance privacy and energy efficiency.</p>
+                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Rollers-2-1920w.jpeg" alt="Roller Shades">
                     </div>
-                    <h3>Roller Shades</h3>
-                    <p>Sleek and versatile, Roller Shades provide effortless light control and a clean, modern look. Available in a variety of fabrics and opacities to perfectly complement your space.</p>
+                    <div class="product-card-body">
+                        <h3>Roller Shades</h3>
+                        <p>Sleek and versatile, Roller Shades provide effortless light control and a clean, modern look. Available in a variety of fabrics and opacities to perfectly complement your space.</p>
+                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Blinds+1-1920w.jpeg" alt="Faux Wood Blinds">
                     </div>
-                    <h3>Faux Wood Blinds</h3>
-                    <p>Get the warm, classic look of wooden blinds with the durability of faux wood. These blinds resist moisture and warping, making them a stylish and practical choice for any home.</p>
+                    <div class="product-card-body">
+                        <h3>Faux Wood Blinds</h3>
+                        <p>Get the warm, classic look of wooden blinds with the durability of faux wood. These blinds resist moisture and warping, making them a stylish and practical choice for any home.</p>
+                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SECTION 3: Free Consultation CTA ===== -->
-    <section class="cta-section">
-        <div class="cta-overlay"></div>
-        <div class="container cta-content">
-            <span class="cta-label">Free In-Home Consultation</span>
-            <h2>Custom Window Fashions for Every Style</h2>
-            <p>Choosing the best window treatment is essential in showcasing your unique style. Our solutions for all types of windows will blend seamlessly with your overall interior design. Window treatments improve the look of your space and provide privacy, control light, and save on energy efficiency. We carefully craft each custom treatment to your specific measurements and desired decorative and functional features, including motorization options.</p>
-            <a href="#hmform" class="btn-cta">Request a Free Consultation</a>
-        </div>
-    </section>
-
-    <!-- ===== SECTION 4: Full Product Showcase ===== -->
-    <section class="products-section products-section-2">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Everything You Need</span>
-                <h2 class="section-title">More Products We Offer</h2>
-                <p class="section-subtitle">From indoor elegance to outdoor comfort, we have the perfect window treatment solution for every room and every budget.</p>
-            </div>
-            <div class="products-grid three-col">
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Banded+1A-1920w.jpeg" alt="Banded Shades">
@@ -173,61 +183,11 @@
                         <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Patio-E-1920w.jpeg" alt="Exterior Patio Shades">
-                    </div>
-                    <div class="product-card-body">
-                        <h3>Exterior Patio Shades</h3>
-                        <p>Make your outdoor space more comfortable by reducing heat and glare while adding style and privacy. Perfect for patios, pergolas, and decks.</p>
-                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Rollers+10-861db71e-1920w.jpeg" alt="Automation Solutions">
-                    </div>
-                    <div class="product-card-body">
-                        <h3>Automation Solutions</h3>
-                        <p>Smart shades and blinds that adjust with a button, swipe, or voice command. Effortless control for comfort, privacy, and energy efficiency.</p>
-                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Living+1-1920w.jpeg" alt="Custom Drapery">
-                    </div>
-                    <div class="product-card-body">
-                        <h3>Custom Drapery</h3>
-                        <p>Add your personal touch with custom drapes in a wide range of textures, patterns, and colors. A simple yet elegant way to transform any room.</p>
-                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Office+1-1920w.jpeg" alt="Cellular Shades">
-                    </div>
-                    <div class="product-card-body">
-                        <h3>Cellular Shades</h3>
-                        <p>Honeycomb-structured shades that trap air for superior insulation. Lower your energy bills while enjoying beautiful light filtering in every season.</p>
-                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Kitchen+3-1920w.jpg" alt="Decorative Grilles">
-                    </div>
-                    <div class="product-card-body">
-                        <h3>Decorative Grilles</h3>
-                        <p>Enhance windows, walls, and ceilings with stunning decorative grilles. A unique custom accent that makes a lasting impression on every guest.</p>
-                        <a href="#hmform" class="product-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SECTION 4B: Trust / Guarantees Bar ===== -->
+    <!-- ===== Trust / Guarantees Bar ===== -->
     <section class="guarantees-section">
         <div class="container">
             <div class="guarantees-grid">
@@ -244,7 +204,12 @@
                 <div class="guarantee-card">
                     <div class="guarantee-icon"><i class="fas fa-sync-alt"></i></div>
                     <h4>Our GuaranTEN</h4>
-                    <p>For every <strong>10 window treatments</strong> you purchase, we'll replace one <strong>for free</strong>. Break it, don't like it, get tired of it &mdash; no questions asked.</p>
+                    <p>For every <strong>10 window treatments</strong> you purchase, we'll replace one <strong>for free</strong>. Break it, don't like it, get tired of it. No questions asked.</p>
+                </div>
+                <div class="guarantee-card">
+                    <div class="guarantee-icon"><i class="fas fa-award"></i></div>
+                    <h4>Industry-Leading Brands</h4>
+                    <p>We partner with <strong>top manufacturers</strong> who give us superior pricing, and we pass those savings directly on to you.</p>
                 </div>
             </div>
             <div class="guarantees-cta">
@@ -253,33 +218,74 @@
         </div>
     </section>
 
-    <!-- ===== SECTION 5: Reviews ===== -->
+    <!-- ===== Reviews ===== -->
     <section class="reviews-section">
         <div class="container">
-            <h3 class="reviews-heading">Reviews from Our Customers</h3>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">
+            <div class="reviews-google-badge">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="google-logo">
+                <div class="reviews-aggregate">
+                    <span class="reviews-aggregate-score">5.0</span>
+                    <div class="reviews-aggregate-stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="review-text">"Love Is Blinds exceeded our expectations. The quality is outstanding and the installation was flawless. They helped us choose the perfect shutters for our living room and the results are stunning!"</p>
-                    <p class="review-author">- Sarah M.</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"We ordered motorized roller shades for our home office and they work perfectly. The team was professional, responsive, and the installation was seamless. Highly recommend!"</p>
-                    <p class="review-author">- David R.</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Beautiful, high quality blinds at a reasonable price that exceeded our expectations. The installers did an awesome job and provided helpful info on care and usage. A terrific experience!"</p>
-                    <p class="review-author">- Jennifer K.</p>
+                    <span class="reviews-aggregate-count">Based on 50+ Google Reviews</span>
                 </div>
             </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-card-header">
+                        <div class="review-avatar">S</div>
+                        <div class="review-meta">
+                            <p class="review-author">Sarah M.</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Love Is Blinds exceeded our expectations. The quality is outstanding and the installation was flawless. They helped us choose the perfect shutters for our living room and the results are stunning!"</p>
+                    <p class="review-verified"><i class="fab fa-google"></i> Verified Google Review</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card-header">
+                        <div class="review-avatar">D</div>
+                        <div class="review-meta">
+                            <p class="review-author">David R.</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">"We ordered motorized roller shades for our home office and they work perfectly. The team was professional, responsive, and the installation was seamless. Highly recommend!"</p>
+                    <p class="review-verified"><i class="fab fa-google"></i> Verified Google Review</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card-header">
+                        <div class="review-avatar">J</div>
+                        <div class="review-meta">
+                            <p class="review-author">Jennifer K.</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Beautiful, high quality blinds at a reasonable price that exceeded our expectations. The installers did an awesome job and provided helpful info on care and usage. A terrific experience!"</p>
+                    <p class="review-verified"><i class="fab fa-google"></i> Verified Google Review</p>
+                </div>
+            </div>
+            <div class="reviews-link-wrap">
+                <a href="https://www.google.com/search?q=Love+Is+Blinds+DFW+reviews" target="_blank" rel="noopener" class="reviews-google-link">Read all reviews on Google <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Final CTA Section ===== -->
+    <section class="final-cta-section">
+        <div class="container final-cta-content">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Get a free in-home consultation from DFW's trusted window treatment experts. No obligation, no pressure. Just expert advice and competitive pricing.</p>
+            <p class="final-cta-urgency">Schedules are filling up. Book this week for priority availability.</p>
+            <a href="#hmform" class="btn-cta">Request My Free Consultation</a>
+            <a href="tel:+1-817-857-8453" class="final-cta-phone"><i class="fas fa-phone-alt"></i> Or call (817) 857-8453</a>
         </div>
     </section>
 
@@ -287,37 +293,15 @@
     <footer class="site-footer">
         <div class="footer-gradient"></div>
         <div class="container footer-content">
-            <div class="footer-grid">
-                <div class="footer-col footer-brand">
-                    <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Love-Is-Blinds-Logo-6b3b5479-1920w.png" alt="Love Is Blinds Logo" class="footer-logo">
-                    <div class="footer-contact">
-                        <p><i class="fas fa-phone-alt"></i> <a href="tel:817-857-8453">(817) 857-8453</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@loveisblindstx.com">info@loveisblindstx.com</a></p>
-                    </div>
-                    <div class="footer-cta-buttons">
-                        <a href="tel:817-857-8453" class="footer-btn"><i class="fas fa-phone-alt"></i> Give Us a Call</a>
-                        <a href="https://dfw.loveisblindstx.com/schedule-now" class="footer-btn footer-btn-secondary"><i class="fas fa-calendar-alt"></i> Schedule Free Estimate</a>
-                    </div>
+            <div class="footer-minimal">
+                <img src="https://lirp.cdn-website.com/bd132645/dms3rep/multi/opt/Love-Is-Blinds-Logo-6b3b5479-1920w.png" alt="Love Is Blinds Logo" class="footer-logo">
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:817-857-8453">(817) 857-8453</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@loveisblindstx.com">info@loveisblindstx.com</a></p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="https://dfw.loveisblindstx.com/products">Products</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/schedule-now">Schedule Now</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/">Sitemap</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Products</h4>
-                    <ul>
-                        <li><a href="https://dfw.loveisblindstx.com/shutters">Plantation Shutters</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/rollers">Roller Shades</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/blinds">Faux Wood Blinds</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/banded-shades">Banded Shades</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/outdoor-patio-shades">Exterior Patio Shades</a></li>
-                        <li><a href="https://dfw.loveisblindstx.com/automation-solutions">Automation Solutions</a></li>
-                    </ul>
+                <div class="footer-cta-buttons">
+                    <a href="tel:817-857-8453" class="footer-btn"><i class="fas fa-phone-alt"></i> Give Us a Call</a>
+                    <a href="#hmform" class="footer-btn footer-btn-secondary"><i class="fas fa-calendar-alt"></i> Schedule Free Consultation</a>
                 </div>
             </div>
         </div>
@@ -328,8 +312,14 @@
         </div>
     </footer>
 
+    <!-- ===== Mobile Sticky CTA Bar ===== -->
+    <div class="mobile-sticky-cta">
+        <a href="tel:+1-817-857-8453" class="mobile-sticky-btn mobile-sticky-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+        <a href="#hmform" class="mobile-sticky-btn mobile-sticky-estimate"><i class="fas fa-calendar-alt"></i> Free Consultation</a>
+    </div>
+
     <script>
-        // Smooth scroll for anchor links
+        // Smooth scroll for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -340,13 +330,76 @@
             });
         });
 
-        // Form submission handler
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // IntersectionObserver: show/hide top bar CTA when hero scrolls out of view
+        const topBarCta = document.getElementById('top-bar-cta');
+        const heroSection = document.getElementById('hero-section');
+        if (topBarCta && heroSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        topBarCta.classList.remove('visible');
+                    } else {
+                        topBarCta.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(heroSection);
+        }
+
+        // Form submission with inline success/error
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            alert('Thank you! We will contact you shortly to schedule your free consultation.');
-            this.reset();
+            const btn = document.getElementById('btn-submit');
+            const btnText = btn.querySelector('.btn-submit-text');
+            const btnSpinner = btn.querySelector('.btn-submit-spinner');
+            const errorBanner = document.getElementById('form-error');
+            const errorText = document.getElementById('form-error-text');
+
+            // Hide previous error
+            errorBanner.style.display = 'none';
+
+            // Show loading state
+            btnText.style.display = 'none';
+            btnSpinner.style.display = 'inline-block';
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            const data = {
+                name: this.name.value,
+                phone: this.phone.value,
+                email: this.email.value,
+                interest: this.interest.value
+            };
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (res.ok) {
+                    // Show success state
+                    const firstName = data.name.split(' ')[0];
+                    document.getElementById('form-success-title').textContent = 'Thank You, ' + firstName + '!';
+                    this.style.display = 'none';
+                    document.querySelector('.form-urgency').style.display = 'none';
+                    document.querySelector('.form-trust-badges').style.display = 'none';
+                    document.getElementById('form-success').style.display = 'block';
+                } else {
+                    errorText.textContent = result.error || 'Something went wrong. Please try again.';
+                    errorBanner.style.display = 'flex';
+                }
+            } catch (err) {
+                errorText.textContent = 'Failed to send. Please call us at (817) 857-8453.';
+                errorBanner.style.display = 'flex';
+            }
+
+            // Reset button state
+            btnText.style.display = 'inline';
+            btnSpinner.style.display = 'none';
+            btn.classList.remove('loading');
+            btn.disabled = false;
         });
     </script>
 </body>
